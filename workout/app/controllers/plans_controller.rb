@@ -14,7 +14,7 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(params[:plan])
     if @plan.save
-      redirect_to @plan, :notice => "Successfully created plan."
+      redirect_to new_workout_type_path, :notice => "Successfully created plan."
     else
       render :action => 'new'
     end

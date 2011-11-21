@@ -1,11 +1,7 @@
 <%= form_for @plan do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :gym %><br />
+    <%= f.label "Gym access available?"%><br />
     <%= f.check_box :gym %>
   </p>
   <p>

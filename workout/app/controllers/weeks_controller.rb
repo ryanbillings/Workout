@@ -13,8 +13,9 @@ class WeeksController < ApplicationController
 
   def create
     @week = Week.new(params[:week])
+    @week.user_id = current_user.id
     if @week.save
-      redirect_to @week, :notice => "Successfully created week."
+      redirect_to new_plan_path, :notice => "Successfully created week. Registration is almost complete"
     else
       render :action => 'new'
     end
