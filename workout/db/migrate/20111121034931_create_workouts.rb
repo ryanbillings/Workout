@@ -5,7 +5,7 @@ class CreateWorkouts < ActiveRecord::Migration
       t.string :name
       t.string :muscle
       t.string :reps
-      t.double :duration
+      t.float :duration
       t.timestamps
     end
   end
