@@ -1,0 +1,13 @@
+one:
+  day_id: 1
+  name: MyString
+  muscle: MyString
+  reps: MyString
+  duration: 
+
+two:
+  day_id: 1
+  name: MyString
+  muscle: MyString
+  reps: MyString
+  duration: 

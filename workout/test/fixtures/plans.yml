@@ -1,0 +1,11 @@
+one:
+  user_id: 1
+  gym: false
+  start_date: 2011-11-20
+  end_date: 2011-11-20
+
+two:
+  user_id: 1
+  gym: false
+  start_date: 2011-11-20
+  end_date: 2011-11-20

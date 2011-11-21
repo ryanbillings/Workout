@@ -1,0 +1,12 @@
+<%= form_for @workout_type do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :plan_id %><br />
+    <%= f.number_field :plan_id %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

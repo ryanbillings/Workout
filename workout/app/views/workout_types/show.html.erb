@@ -1,0 +1,16 @@
+<% title "Workout Type" %>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @workout_type.plan_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @workout_type.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_workout_type_path(@workout_type) %> |
+  <%= link_to "Destroy", @workout_type, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", workout_types_path %>
+</p>

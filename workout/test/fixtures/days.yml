@@ -1,0 +1,11 @@
+one:
+  plan_id: 1
+  date: 2011-11-20
+  duration: 
+  complete: false
+
+two:
+  plan_id: 1
+  date: 2011-11-20
+  duration: 
+  complete: false

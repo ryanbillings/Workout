@@ -1,0 +1,28 @@
+<% title "Workout" %>
+
+<p>
+  <strong>Day:</strong>
+  <%= @workout.day_id %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @workout.name %>
+</p>
+<p>
+  <strong>Muscle:</strong>
+  <%= @workout.muscle %>
+</p>
+<p>
+  <strong>Reps:</strong>
+  <%= @workout.reps %>
+</p>
+<p>
+  <strong>Duration:</strong>
+  <%= @workout.duration %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_workout_path(@workout) %> |
+  <%= link_to "Destroy", @workout, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", workouts_path %>
+</p>

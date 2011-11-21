@@ -1,0 +1,24 @@
+<% title "Day" %>
+
+<p>
+  <strong>Plan:</strong>
+  <%= @day.plan_id %>
+</p>
+<p>
+  <strong>Date:</strong>
+  <%= @day.date %>
+</p>
+<p>
+  <strong>Duration:</strong>
+  <%= @day.duration %>
+</p>
+<p>
+  <strong>Complete:</strong>
+  <%= @day.complete %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_day_path(@day) %> |
+  <%= link_to "Destroy", @day, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", days_path %>
+</p>

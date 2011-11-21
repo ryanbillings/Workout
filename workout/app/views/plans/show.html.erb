@@ -1,0 +1,24 @@
+<% title "Plan" %>
+
+<p>
+  <strong>User:</strong>
+  <%= @plan.user_id %>
+</p>
+<p>
+  <strong>Gym:</strong>
+  <%= @plan.gym %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+  <%= @plan.start_date %>
+</p>
+<p>
+  <strong>End Date:</strong>
+  <%= @plan.end_date %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_plan_path(@plan) %> |
+  <%= link_to "Destroy", @plan, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", plans_path %>
+</p>

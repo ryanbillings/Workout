@@ -1,0 +1,36 @@
+<%= form_for @week do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :monday %><br />
+    <%= f.text_field :monday %>
+  </p>
+  <p>
+    <%= f.label :tuesday %><br />
+    <%= f.text_field :tuesday %>
+  </p>
+  <p>
+    <%= f.label :wednesday %><br />
+    <%= f.text_field :wednesday %>
+  </p>
+  <p>
+    <%= f.label :thursday %><br />
+    <%= f.text_field :thursday %>
+  </p>
+  <p>
+    <%= f.label :friday %><br />
+    <%= f.text_field :friday %>
+  </p>
+  <p>
+    <%= f.label :saturday %><br />
+    <%= f.text_field :saturday %>
+  </p>
+  <p>
+    <%= f.label :sunday %><br />
+    <%= f.text_field :sunday %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,31 @@
+<% title "Weeks" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Monday</th>
+    <th>Tuesday</th>
+    <th>Wednesday</th>
+    <th>Thursday</th>
+    <th>Friday</th>
+    <th>Saturday</th>
+    <th>Sunday</th>
+  </tr>
+  <% for week in @weeks %>
+    <tr>
+      <td><%= week.user_id %></td>
+      <td><%= week.monday %></td>
+      <td><%= week.tuesday %></td>
+      <td><%= week.wednesday %></td>
+      <td><%= week.thursday %></td>
+      <td><%= week.friday %></td>
+      <td><%= week.saturday %></td>
+      <td><%= week.sunday %></td>
+      <td><%= link_to "Show", week %></td>
+      <td><%= link_to "Edit", edit_week_path(week) %></td>
+      <td><%= link_to "Destroy", week, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Week", new_week_path %></p>

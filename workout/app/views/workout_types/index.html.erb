@@ -1,0 +1,19 @@
+<% title "Workout Types" %>
+
+<table>
+  <tr>
+    <th>Plan</th>
+    <th>Name</th>
+  </tr>
+  <% for workout_type in @workout_types %>
+    <tr>
+      <td><%= workout_type.plan_id %></td>
+      <td><%= workout_type.name %></td>
+      <td><%= link_to "Show", workout_type %></td>
+      <td><%= link_to "Edit", edit_workout_type_path(workout_type) %></td>
+      <td><%= link_to "Destroy", workout_type, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Workout Type", new_workout_type_path %></p>
