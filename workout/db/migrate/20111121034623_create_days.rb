@@ -3,7 +3,7 @@ class CreateDays < ActiveRecord::Migration
     create_table :days do |t|
       t.integer :plan_id
       t.date :date
-      t.double :duration
+      t.float :duration
       t.boolean :complete
       t.timestamps
     end
