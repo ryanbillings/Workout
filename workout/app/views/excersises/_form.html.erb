@@ -1,0 +1,20 @@
+<%= form_for @excersise do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :day_id %><br />
+    <%= f.number_field :day_id %>
+  </p>
+  <p>
+    <%= f.label :muscle %><br />
+    <%= f.text_field :muscle %>
+  </p>
+  <p>
+    <%= f.label :repitions %><br />
+    <%= f.text_field :repitions %>
+  </p>
+  <p>
+    <%= f.label :duration %><br />
+    <%= f.text_field :duration %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

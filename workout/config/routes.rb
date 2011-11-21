@@ -1,5 +1,5 @@
 Workout::Application.routes.draw do
-  resources :workouts
+  resources :excersises
 
   resources :days
 

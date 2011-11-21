@@ -1,0 +1,11 @@
+one:
+  day_id: 1
+  muscle: MyString
+  repitions: MyString
+  duration: 1.5
+
+two:
+  day_id: 1
+  muscle: MyString
+  repitions: MyString
+  duration: 1.5
