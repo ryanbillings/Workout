@@ -9,7 +9,7 @@
   </tr>
   <% for plan in @plans %>
     <tr>
-      <td><%= plan.user_id %></td>
+      <td><%= User.find_by_id(plan.user_id).username %></td>
       <td><%= plan.gym %></td>
       <td><%= plan.start_date %></td>
       <td><%= plan.end_date %></td>

@@ -13,6 +13,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(params[:plan])
+    @plan.user_id = current_user.id
     if @plan.save
       redirect_to new_workout_type_path, :notice => "Successfully created plan."
     else

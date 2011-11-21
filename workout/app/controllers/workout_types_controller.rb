@@ -1,3 +1,4 @@
+include WorkoutTypesHelper
 class WorkoutTypesController < ApplicationController
   def index
     @workout_types = WorkoutType.all
@@ -15,6 +16,7 @@ class WorkoutTypesController < ApplicationController
     @workout_type = WorkoutType.new(params[:workout_type])
     @workout_type.plan_id = Plan.find_by_user_id(current_user.id)
     if @workout_type.save
+      rand()
       redirect_to @workout_type, :notice => "Successfully created workout type."
     else
       render :action => 'new'
