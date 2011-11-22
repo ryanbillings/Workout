@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20111122032935) do
   create_table "days", :force => true do |t|
     t.integer  "plan_id"
     t.date     "date"
+    t.string   "name"
     t.float    "duration"
     t.boolean  "complete"
     t.datetime "created_at"

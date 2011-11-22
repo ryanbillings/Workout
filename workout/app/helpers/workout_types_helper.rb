@@ -14,6 +14,7 @@ module WorkoutTypesHelper
       wrk2=Excersise.new
       wrk2.day_id=day.id
       wrk2.save!
+      
     end
   end
 end
