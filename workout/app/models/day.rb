@@ -1,11 +1,8 @@
 class Day < ActiveRecord::Base
-  attr_accessible :plan_id, :date, :duration, :complete
+  attr_accessible :plan_id, :date, :duration, :complete, :day
   belongs_to :plan
   has_many :excersises
-  has_event_calendar :start_at_field => 'date', :end_at_field => 'date', :name_field => 'plan_id'
+  has_event_calendar :start_at_field => 'date', :end_at_field => 'date'
 
-  def name
-    "Chest"
-  end
 
 end
