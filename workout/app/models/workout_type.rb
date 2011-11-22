@@ -3,10 +3,12 @@ class WorkoutType < ActiveRecord::Base
   belongs_to :plan
   def self.getWrkNames
     arr = Array.new
-    arr.push("Deltoids")
     arr.push("Upper Body")
     arr.push("Lower Body")
     arr.push("Core")
+    arr.push("Cardio")
+    arr.push("Yoga")
+    arr.push("Plyometrics")
     return arr
   end
 end

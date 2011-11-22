@@ -16,4 +16,38 @@ module WorkoutTypesHelper
       wrk2.save!
     end
   end
+
+  def generate_populate
+
+    @workout_types = current_user.plan.workout_types
+    @week = current_user.week
+    @start_date = current_user.start_date
+    @end_date = current_user.end_date
+
+    # Loop through workout types
+    for wk in @workout_types
+
+      # Get corresponding 'default' workouts
+      priority_excersises = get_exercise(wk)
+      
+
+      # Loop through start date to end date, split up by weeks
+        # Sub loop through week, split up by days
+        
+          # Get user's week -> day and amount of time 
+            # Do populations based on amount of time
+            # End 
+          # End
+        # End
+      # End
+      end
+  end
+
+  def get_exercise(wk)
+    return_array = Array.new
+    if wk == "Upper Body"
+      return_array.push(Excersise.where("day_id = ? AND muscle = ?", nil, "Chest"))
+      return_array.push(Excersise.where("day_id = ? AND muscle = ?", nil, "Bicep"))
+    end
+  end
 end
