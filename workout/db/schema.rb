@@ -11,21 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111122032935) do
+ActiveRecord::Schema.define(:version => 20111121041440) do
 
   create_table "days", :force => true do |t|
     t.integer  "plan_id"
     t.date     "date"
+    t.string   "name"
     t.float    "duration"
     t.boolean  "complete"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "events", :force => true do |t|
-    t.string   "name"
-    t.datetime "start_at"
-    t.datetime "end_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
