@@ -10,12 +10,14 @@ jQuery(document).ready(function($) {
     event_id = $(this).attr("data-event-id");
 		event_class_name = $(this).attr("data-event-class");
     $(".ec-"+event_class_name+"-"+event_id).css("background-color", highlight_color);
+    $('#' + event_id).css("visibility","visible");
   });
   $(".ec-event-bg").live("mouseout", function() {
     event_id = $(this).attr("data-event-id");
 		event_class_name = $(this).attr("data-event-class");
     event_color = $(this).attr("data-color");
     $(".ec-"+event_class_name+"-"+event_id).css("background-color", event_color);
+    $('#' + event_id).css("visibility","hidden");
   });
   
   // highlight events that don't have a background color

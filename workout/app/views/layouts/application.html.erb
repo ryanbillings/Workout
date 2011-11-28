@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "reset" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -9,11 +10,19 @@
   </head>
   <body>
     <div id="container">
+      <% if current_user %>
+       <div id = "header">
+        <%= link_to(image_tag('logo.png'), days_path) %>
+        <%= render :partial => 'partials/navigation' %>
+       </div>
+      <% end %>
+       <div id = "main">
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
+       <% end %>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
+   </div>
   </body>
 </html>

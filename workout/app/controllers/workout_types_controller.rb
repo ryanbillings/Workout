@@ -10,6 +10,8 @@ class WorkoutTypesController < ApplicationController
 
   def new
     @workout_type = WorkoutType.new
+    @workout_types = WorkoutType.getWrkNames
+    @errors = Array.new
   end
 
   def create
@@ -26,6 +28,25 @@ class WorkoutTypesController < ApplicationController
   def edit
     @workout_type = WorkoutType.find(params[:id])
   end
+
+  def multi_create
+    @workout_types = params[:workout_type_names]
+    @errors = Array.new
+    if @workout_types.length > 3
+      @errors.push("You can only choose up to 3 workout types")
+      @workout_types = WorkoutType.getWrkNames
+      render :action => 'new'
+      return
+    end
+    for wrkout_type in @workout_types
+      temp = WorkoutType.new
+      temp.plan_id = Plan.find_by_user_id(current_user.id)
+      temp.name = wrkout_type
+      temp.save
+    end
+    redirect_to :root, :notice => "Successfully selected workout types."
+  end
+      
 
   def update
     @workout_type = WorkoutType.find(params[:id])

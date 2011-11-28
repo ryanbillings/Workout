@@ -1,8 +1,17 @@
-<%= form_for @workout_type do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.select :name,WorkoutType.getWrkNames %>
-  </p>
-  <p><%= f.submit %></p>
+<%# form_for @workout_type do |f| %>
+<%= form_tag :action => "multi_create", :remote => true do %>
+  <%# f.error_messages %>
+  <ul>
+  <% @errors.each do |error| %>
+     <%= error %>
+  <% end %>
+  <% for wrkout in @workout_types %>
+    <li>
+      <%= check_box_tag 'workout_type_names[]', wrkout %>
+      <%= wrkout %>
+    </li>
+   <% end %>
+   </ul>
+  <p><%= submit_tag %></p>
+  
 <% end %>

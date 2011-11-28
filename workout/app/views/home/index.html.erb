@@ -1,0 +1,22 @@
+<div id = "header">
+  <div class = "top_nav">
+    <a href="about.html">about</a>
+    <a href="contact.html">contact</a>
+    <%= link_to "sign out", :logout %>
+  </div>
+</div>
+
+<div id = "container">
+  My Days
+  <%= link_to "List", days_path %>
+  <%= link_to "Calendar", :calendar %>
+
+  <%= link_to "New Meeting", new_day_path %>
+
+  <div id = "notifications">
+
+  </div>
+  
+</div>
+
+

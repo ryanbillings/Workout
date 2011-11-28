@@ -1,4 +1,5 @@
 module WorkoutTypesHelper
+=begin
   def rand
     i=0
     plan_id=Plan.find_by_user_id(current_user.id).id
@@ -16,7 +17,7 @@ module WorkoutTypesHelper
       wrk2.save!
     end
   end
-
+=end
   def generate_populate
 
     @workout_types = current_user.plan.workout_types
