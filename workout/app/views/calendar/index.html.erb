@@ -9,13 +9,14 @@
     <h3>Meeting Details:</h3>
 <!-- Create hidden divs with meeting locations, which will be highlighted on hover -->
 <% for day in @days %>
-  <div style = "background-color:#ffffff; height: 150px; width: 150px; margin-left: 6px;
+  <div style = "background-color:#ffffff; width: 150px; margin-left: 6px;
 opacity: 0.6; filter:alpha(opacity=60);visibility:hidden; padding:3px;border:1px solid gray; text-align:center; font-size:12px; color:#6e6e6e;" id = "<%=day.id%>">
     <span style = "font-weight:bold; color:#16a8cc;"><%= day.name%></span><br /><br />
-    Duration: <%= day.duration %><br />
-    Date: <%= Day.format_time(day.date) %><br />
+    Duration: <%= day.duration %> minutes<br />
+    Date: <%= Day.format_date(day.date) %><br />
     <% for ex in day.exercises %>
-    Exercise: <%= ex.name %><br />
+    <br />
+    <span style = "font-weight: bold;">Exercise: <%= ex.name %></span><br />
     Muscle: <%= ex.muscle %><br />
     Reps: <%= ex.reps %><br />
     <% end %>
