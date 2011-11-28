@@ -7,6 +7,7 @@ class CalendarController < ApplicationController
     @shown_month = Date.civil(@year, @month)
 
     @event_strips = current_user.days.event_strips_for_month(@shown_month)
+    @days = current_user.days
   end
   
 end

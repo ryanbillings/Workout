@@ -1,20 +1,58 @@
+<%= stylesheet_link_tag 'reset', 'login', 'signup' %>
+
+<div id="wrap">
+
+<div id="top">
+  <%= image_tag 'logo_login.png' %>
+  <p>Sign Up</p>
+</div><!-- end title -->
+
+<div id="signupBox">
 <%= form_for @user do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-  <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
+  <ul id="steps">
+  <%= image_tag 'step_one.png', :class => "one" %>
+  <%= image_tag 'step_two.png', :class => "two" %>
+  <%= image_tag 'step_three.png', :class => "three" %>
+  <li>
+    <div id="stepBox" class="left">
+      <p>
+        <%= f.label :first_name, "first name" %><br />
+        <%= f.text_field :first_name, :class => "txtfield" %>
+      </p>
+      <p>
+        <%= f.label :last_name, "last name" %><br />
+        <%= f.text_field :last_name, :class => "txtfield" %>
+      </p>
+    </div><!-- end stepOne -->
+  </li>
+  <li>
+    <div id="stepBox" class="left middle">
+      <p>
+        <%= f.label :username, "username" %><br />
+        <%= f.text_field :username, :class => "txtfield" %>
+      </p>
+      <p>
+        <%= f.label :email, "email address" %><br />
+        <%= f.text_field :email, :class => "txtfield" %>
+      </p>
+    </div><!-- end stepTwo -->
+  </li>
+  <li>
+    <div id="stepBox" class="left">
+      <p>
+        <%= f.label :password, "password" %><br />
+        <%= f.password_field :password, :class => "txtfield" %>
+      </p>
+      <p>
+        <%= f.label :password_confirmation, "confirm password" %><br />
+        <%= f.password_field :password_confirmation, :class => "txtfield" %>
+      </p>
+      <p><%= f.submit (@user.new_record? ? "Sign up" : "Update"), :class => "button" %></p>
+    </div><!-- end stepThree -->
+  </li>
+  </ul>
 <% end %>
+</div><!-- end signupBox-->
+
+<div id="wrap"><!-- end wrap -->

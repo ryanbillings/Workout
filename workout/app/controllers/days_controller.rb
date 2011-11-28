@@ -1,10 +1,14 @@
+require 'will_paginate/array'
 class DaysController < ApplicationController
+  before_filter :login_required
   def index
-    @days = Day.all
+    @mydays = current_user.days.paginate :page => params[:page], :per_page => 6
+    @notification = Day.where("date = ? and plan_id = ?", Time.now, current_user.plan.id).first
   end
 
   def show
     @day = Day.find(params[:id])
+    @excersises = @day.exercises
   end
 
   def new
@@ -13,6 +17,7 @@ class DaysController < ApplicationController
 
   def create
     @day = Day.new(params[:day])
+    @day.plan_id = current_user.plan.id
     if @day.save
       redirect_to @day, :notice => "Successfully created day."
     else

@@ -1,7 +1,14 @@
+/**** general styles *****/
 body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
+  background-color: #16a8cc;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
+}
+
+h3 {
+	font-weight: bold;
+	font-size: 15px;
+	color: #515151;
 }
 
 a img {
@@ -19,14 +26,95 @@ a {
 }
 
 #container {
-  width: 75%;
+  width: 1015px;
   margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
 }
 
+/**** header ****/
+#header img {
+	margin-top: 12px;
+}
+
+/**** navigation ****/
+#nav {
+	float: right;
+	margin-top: 20px;
+}
+
+#nav a:link {
+	color: #eeeeee;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#nav a:visited {
+	color: #eeeeee;
+	text-decoration: none;
+}
+
+#nav a:hover {
+	color: #eeeeee;
+	text-decoration: underline;
+}
+
+#nav a:active {
+		color: #eeeeee;
+	text-decoration: none;
+}
+
+#nav ul {
+	/*width: 457px;*/
+	height: 30px;
+	list-style: none;
+}
+
+#nav li {
+	float: left;
+	display: table-cell;
+	margin-left: 25px;
+}
+
+.searchfield {
+	width: 150px;
+	height: 26px;
+        position: relative;
+        top: -8px;
+	/*margin-top: -3px;
+        
+	padding-left: 10px;
+	padding-right: 25px;*/
+	-moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #16a8cc;
+}
+
+.searchicon {
+        position: relative;
+        right: 27px;
+        /*margin-right: 20px;
+        z-index: 2;*/
+} 
+
+/**** main ****/
+#main {
+	width: 92%;
+	/*height: 572px;*/
+	background: #44b8d5;
+	border: 7px solid #21b1d5;
+	-moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -khtml-border-radius: 25px;
+    border-radius: 25px;
+	padding: 30px;
+	margin-top: -20px;
+}
+
+/**** messages ****/
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
@@ -68,8 +156,15 @@ a {
 
 .error_messages p {
   margin: 8px 10px;
+  color: gray;
 }
 
 .error_messages ul {
   margin: 0;
+  color:black;
+}
+
+.error_messages li {
+  color:gray;
+  margin-left: 5px;
 }

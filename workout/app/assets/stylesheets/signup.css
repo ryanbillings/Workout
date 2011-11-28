@@ -1,0 +1,75 @@
+.left {
+	float: left;
+}
+
+#wrap {
+	width: 1000px;
+	font-size: 18px;
+}
+
+#top {
+	width: 465px;
+	margin-top: 65px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+
+#steps {
+	height: 310px;
+}
+
+#steps li {
+	height: 310px;
+	display: inline;
+}
+
+.one {
+	position: absolute;
+	margin-left: 23px;
+}
+.two {
+	position: absolute;
+	margin-left: 335px;
+}
+.three {
+	position: absolute;
+	margin-left: 647px;
+}
+
+#signupBox {
+	background-color: #44b8d5;
+	width: 925px;
+	height: 338px;
+	padding: 20px 40px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#stepBox {
+	background-color: #44b8d5;
+	width: 253px;
+	height: 184px;
+	margin-top: 30px;
+	padding: 40px 18px;
+	border: 7px solid #16a8cc;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.middle {
+	margin: 0 8px;
+}
+
+.txtfield {
+	width: 255px;
+	height: 55px;
+}
+
+.button {
+	margin-top: 0px;
+}

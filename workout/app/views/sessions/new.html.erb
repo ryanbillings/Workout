@@ -1,15 +1,27 @@
-<% title "Log in" %>
+<%= stylesheet_link_tag 'reset', 'login' %>
 
-<p>Don't have an account? <%= link_to "Sign up!", signup_path %></p>
+<div id="wrap">
 
+<div id="top">
+  <%= image_tag 'logo_login.png' %>
+  <p>Sign In</p>
+</div><!-- end title -->
+
+<div id="loginBox">
 <%= form_tag sessions_path do %>
-  <p>
-    <%= label_tag :login, "Username or Email Address" %><br />
-    <%= text_field_tag :login, params[:login] %>
+
+  <p class="label">
+    <%= label_tag :login, "Username" %><br />
+    <%= text_field_tag :login, params[:login], :class => "txtfield" %>
   </p>
-  <p>
+  <p class="label">
     <%= label_tag :password %><br />
-    <%= password_field_tag :password %>
+    <%= password_field_tag :password, nil, :class => "txtfield" %>
   </p>
-  <p><%= submit_tag "Log in" %></p>
+  <p id="signup">Don't have an account? <%= link_to "Sign up!", signup_path, :class => "link" %></p>
+  <p><%= submit_tag "Sign In", :class => "button" %></p>
+
 <% end %>
+</div><!-- end loginBox -->
+
+</div><!-- end wrap -->

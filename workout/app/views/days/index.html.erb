@@ -1,23 +1,41 @@
-<% title "Days" %>
+<%= stylesheet_link_tag 'day_index' %>
+<%= javascript_include_tag 'hover' %>
+<div id="sideModules">
+  <%= link_to(image_tag('new_day_button.png'), new_day_path) %>
+  <div id="notifications">
+    <h3>Notifications:</h3>
+    <!-- Show all pending invites -->
+      <% if @notification != nil %>
+      <p><%= link_to "#{@notification.name}", @notification %></p>
+      <p><%= Day.format_date(@notification.date) %></p>
+	  <br />
+       <% else %>
+       <p>No workouts planned for today</p>
+       <% end %>
+  </div><!-- end notifications -->
+</div><!-- end sideModules -->
 
-<table>
-  <tr>
-    <th>Plan</th>
-    <th>Date</th>
-    <th>Duration</th>
-    <th>Complete</th>
-  </tr>
-  <% for day in @days %>
-    <tr>
-      <td><%= day.plan_id %></td>
-      <td><%= day.date %></td>
-      <td><%= day.duration %></td>
-      <td><%= day.complete %></td>
-      <td><%= link_to "Show", day %></td>
-      <td><%= link_to "Edit", edit_day_path(day) %></td>
-      <td><%= link_to "Destroy", day, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<div id="mainModule">
+  <%= image_tag 'my_days_title.png' %>
+  <div id="view">
+    <%= link_to "Calendar", calendar_path %>
+  </div><!-- end view -->
+  <div id="tablerow">
+    <h3><%= current_user.first_name + "'s Upcoming Workouts:" %></h3>
+  </div><!-- end tablerow -->
+  <div id="listBox">
+    <table>
+      <!-- List of all confirmed day invites -->
+      <% for day in @mydays %>
+        <tr onclick="location.href='days/<%= day.id %>'" class = "day_list">
+          <td class="dayName"><%= day.name %></td>
+  	  <td class="dayDate"><%= day.duration %></td>
+          <td class="dayTime"><%= day.format_date(day.date) %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div><!-- end listBox -->
+<p><%= will_paginate @mydays, :previous_label => "&nbsp;Previous&nbsp;", :next_label => "&nbsp;Next&nbsp;" %></p>
+</div><!-- end mainModule -->
 
-<p><%= link_to "New Day", new_day_path %></p>
+<div style = "clear:both;"></div>

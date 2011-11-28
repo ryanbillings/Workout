@@ -25,47 +25,18 @@
 
 /* Month name header & links */
 .ec-calendar-header {
-/*  padding: 5px 0;
-  width: 100%; */
+  padding: 5px 0;
+  width: 100%;
   table-layout: fixed;
-width: 100%;
-        margin-top: 10px;
-        /*margin-bottom: 10px;
-        padding-left: 27px;
-        padding-top: 10px;*/
-       -moz-border-radius: 5px;
-       -webkit-border-radius: 5px;
-       -khtml-border-radius: 5px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-        background: #f4f4f4; /* Old browsers */
-        background: -moz-linear-gradient(top,  #f4f4f4 0%, #d9d9d9 100%); /* FF3.6+ */
-        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#d9d9d9)); /* Chrome,Safari4+ */
-        background: -webkit-linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* Chrome10+,Safari5.1+ */
-        background: -o-linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* Opera 11.10+ */
-        background: -ms-linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* IE10+ */
-        background: linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* W3C */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#d9d9d9',GradientType=0 ); /* IE6-9 */
-
 }
 
 .ec-month-name {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
-  height: 40px;
-  margin-top: 15px;
-  color: gray;
-  vertical-align: middle;
 }
 
 .ec-month-nav {
-  vertical-align: middle;
-  color: #A0A0A0;
-}
 
-.ec-month-nav a{
-  text-decoration:none;
-  color: #A0A0A0;
 }
 
 /* Containers */
