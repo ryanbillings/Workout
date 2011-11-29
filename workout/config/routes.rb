@@ -1,4 +1,5 @@
 Workout::Application.routes.draw do
+  match 'exercises/description' => 'exercises#description'
   resources :exercises
 
   resources :days

@@ -38,4 +38,8 @@ class ExercisesController < ApplicationController
     @exercise.destroy
     redirect_to exercises_url, :notice => "Successfully destroyed exercise."
   end
+
+  def description
+
+  end
 end

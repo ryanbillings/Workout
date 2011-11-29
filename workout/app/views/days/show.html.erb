@@ -26,7 +26,7 @@
   <p>Name:<%= excersise.name %></p>
   <p>Reps:<%= excersise.reps %></p>
   <p>Duration: <%= excersise.duration %> minutes</p>
-  <p><%= image_tag("#{excersise.name}.jpg", :class => "workout_image")%></p>
+  <p><%= link_to image_tag("#{excersise.name}.jpg", :class => "workout_image"), {:action => 'description', :controller => 'exercises', :name => excersise.name} %></p>
 <% end %>
 </div>
 <p>
