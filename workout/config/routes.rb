@@ -1,7 +1,7 @@
 Workout::Application.routes.draw do
   match 'exercises/description' => 'exercises#description'
   match 'exercises/search', :as => :search
-
+  match 'exercises/browse', :as => :browse
   resources :exercises
   resources :days
 

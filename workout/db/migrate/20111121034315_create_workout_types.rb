@@ -4,6 +4,7 @@ class CreateWorkoutTypes < ActiveRecord::Migration
       t.integer :plan_id
       t.string :name
       t.integer :priority
+      t.integer :min_time
       t.timestamps
     end
   end
