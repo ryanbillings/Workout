@@ -1,32 +1,45 @@
-<%= form_for @week do |f| %>
-  <%= f.error_messages %>
+<%= stylesheet_link_tag 'reset', 'login', 'signup' %>
+
+<div id = "wrap">
+  <div id = "top">
+  <%= image_tag 'logo_login.png' %>
+  <p>Enter Week</p>
+  </div>
+
+<div id = "signupBox">
+<p style = "color:gray;width: 200px; font-size: 12px;">Please enter in the amount of time you want to work out per day during a normal week.</p>
+<br />
+<%= form_tag :action => "create", :remote => true do %>
   <p>
-    <%= f.label :monday %><br />
-    <%= f.text_field :monday %>
-  </p>
+    <span style = "text-decoration:underline;">Monday</span><br />
+    <span>Hours: <%= select(@week,"monday_hour", 0..3) %>&nbsp;Minutes: <%= select(@week,"monday_minutes", 0..59) %></span>
+  </p><br /> 
   <p>
-    <%= f.label :tuesday %><br />
-    <%= f.text_field :tuesday %>
+    <span style = "text-decoration:underline;">Tuesday</span><br />
+    <span>Hours: <%= select(@week,"tuesday_hour", 0..3) %>&nbsp;Minutes: <%= select(@week,"tuesday_minutes", 0..59) %></span>
+  </p><br />
+      <p>
+    <span style = "text-decoration:underline;">Wednesday</span><br />
+    <span>Hours: <%= select(@week,"wednesday_hour", 0..3) %>&nbsp;Minutes: <%= select(@week,"wednesday_minutes", 0..59) %></span>
+  </p><br />
+ <p>
+    <span style = "text-decoration:underline;">Thursday</span><br />
+    <span>Hours: <%= select(@week,"thursday_hour", 0..3) %>&nbsp;Minutes: <%= select(@week,"thursday_minutes", 0..59) %></span>
+  </p><br />
+ <p>
+    <span style = "text-decoration:underline;">Friday</span><br />
+    <span>Hours: <%= select(@week,"friday_hour", 0..3) %>&nbsp;Minutes: <%= select(@week,"friday_minutes", 0..59) %></span>
+  </p><br />
+ <p>
+    <span style = "text-decoration:underline;">Saturday</span><br />
+    <span>Hours: <%= select(@week,"saturday_hour", 0..3) %>&nbsp;Minutes: <%= select(@week,"saturday_minutes", 0..59) %></span>
+  </p><br />
+ <p>
+    <span style = "text-decoration:underline;">Sunday</span><br />
+    <span>Hours: <%= select(@week,"sunday_hour", 0..3) %>&nbsp;Minutes: <%= select(@week,"sunday_minutes", 0..59) %></span>
   </p>
-  <p>
-    <%= f.label :wednesday %><br />
-    <%= f.text_field :wednesday %>
-  </p>
-  <p>
-    <%= f.label :thursday %><br />
-    <%= f.text_field :thursday %>
-  </p>
-  <p>
-    <%= f.label :friday %><br />
-    <%= f.text_field :friday %>
-  </p>
-  <p>
-    <%= f.label :saturday %><br />
-    <%= f.text_field :saturday %>
-  </p>
-  <p>
-    <%= f.label :sunday %><br />
-    <%= f.text_field :sunday %>
-  </p>
-  <p><%= f.submit %></p>
-<% end %>
+
+  <%= submit_tag %>
+ <% end %>
+</div>
+<div id = "wrap">

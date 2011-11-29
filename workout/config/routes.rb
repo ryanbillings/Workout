@@ -1,7 +1,8 @@
 Workout::Application.routes.draw do
   match 'exercises/description' => 'exercises#description'
-  resources :exercises
+  match 'exercises/search', :as => :search
 
+  resources :exercises
   resources :days
 
   resources :workout_types
@@ -21,6 +22,7 @@ Workout::Application.routes.draw do
   resources :sessions
 
   resources :users
+
 
   match 'home/about', :as => :about
   match 'workout_types/multi_create' => 'workout_types#multi_create'

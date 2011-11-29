@@ -8,13 +8,22 @@ class WeeksController < ApplicationController
   end
 
   def new
-    @week = Week.new
+    @week = params[:week]
   end
 
   def create
-    @week = Week.new(params[:week])
-    @week.user_id = current_user.id
-    if @week.save
+    newWeek = Week.new
+    newWeek.user_id = current_user.id
+    newWeek.monday = params[:monday_hour].to_i*60 + (params[:monday_minutes].to_i)
+    
+    newWeek.tuesday = params[:tuesday_hour].to_i*60 + (params[:tuesday_minutes].to_i)
+    newWeek.wednesday = params[:wednesday_hour].to_i*60 + (params[:wednesday_minutes].to_i)
+    newWeek.thursday = params[:thursday_hour].to_i*60 + (params[:thursday_minutes].to_i)
+    newWeek.friday = params[:friday_hour].to_i*60 + (params[:friday_minutes].to_i)
+    newWeek.saturday = params[:saturday_hour].to_i*60 + (params[:saturday_minutes].to_i)
+    newWeek.sunday = params[:sunday_hour].to_i*60 + (params[:sunday_minutes].to_i)
+
+    if newWeek.save
       redirect_to new_plan_path, :notice => "Successfully created week. Registration is almost complete"
     else
       render :action => 'new'
