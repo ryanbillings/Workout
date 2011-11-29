@@ -38,4 +38,13 @@ class ExercisesController < ApplicationController
     @exercise.destroy
     redirect_to exercises_url, :notice => "Successfully destroyed exercise."
   end
+
+  def description
+    @exercise = Exercise.where("name = ? AND day_id IS ?", params[:name], nil).first
+  end
+
+  def search
+    query = params[:search]
+    @exercises = Exercise.where("name LIKE ? OR muscle LIKE ? AND day_id IS ?","%#{query}%","#{query}%",nil).paginate :page => params[:page], :per_page => 6
+  end
 end

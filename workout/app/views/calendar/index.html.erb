@@ -6,7 +6,7 @@
 <div id="sideModules">
   <%= link_to(image_tag('new_day_button.png'), new_day_path) %>
   <div id="notifications" style="height: 200px;">
-    <h3>Meeting Details:</h3>
+    <h3>Workout Details:</h3>
 <!-- Create hidden divs with meeting locations, which will be highlighted on hover -->
 <% for day in @days %>
   <div style = "background-color:#ffffff; height: 150px; width: 150px; margin-left: 6px;
@@ -14,8 +14,8 @@ opacity: 0.6; filter:alpha(opacity=60);visibility:hidden; padding:3px;border:1px
     <span style = "font-weight:bold; color:#16a8cc;"><%= day.name%></span><br /><br />
     Duration: <%= day.duration %><br />
     Date: <%= Day.format_time(day.date) %><br />
-    <% for ex in day.exercises %>
-    Exercise: <%= ex.name %><br />
+    <% for ex in day.exercises %><br />
+    <span style = "font-weight:bold;">Exercise: <%= ex.name %></span><br />
     Muscle: <%= ex.muscle %><br />
     Reps: <%= ex.reps %><br />
     <% end %>

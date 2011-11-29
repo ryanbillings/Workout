@@ -3,7 +3,7 @@ class DaysController < ApplicationController
   before_filter :login_required
   def index
     @mydays = current_user.days.paginate :page => params[:page], :per_page => 6
-    @notification = Day.where("date = ? and plan_id = ?", Time.now, current_user.plan.id).first
+    @notification = Day.where("date = ? and plan_id = ?", Time.now.strftime("%Y-%m-%d"), current_user.plan.id).first
   end
 
   def show

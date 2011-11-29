@@ -28,7 +28,11 @@ ActiveRecord::Schema.define(:version => 20111122065332) do
     t.integer  "duration"
     t.string   "name"
     t.string   "reps"
+    t.string   "url"
+    t.text     "description"
     t.integer  "day_id"
+    t.integer  "gym"
+    t.boolean  "core"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
