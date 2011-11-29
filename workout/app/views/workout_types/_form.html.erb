@@ -5,12 +5,18 @@
   <% @errors.each do |error| %>
      <%= error %>
   <% end %>
-  <% for wrkout in @workout_types %>
+  <%# for wrkout in @workout_types %>
     <li>
-      <%= check_box_tag 'workout_type_names[]', wrkout %>
-      <%= wrkout %>
+      1) <%= select @wt1, 'workout_type1', WorkoutType.getWrkNames, {:include_blank => true} %>
     </li>
-   <% end %>
+    <li>
+      2) <%= select @wt2, 'workout_type2', WorkoutType.getWrkNames, {:include_blank => true} %>
+    </li>
+     <li>
+      3) <%= select @wt3, 'workout_type3', WorkoutType.getWrkNames, {:include_blank => true} %>
+    </li>
+
+   <%# end %>
    </ul>
   <p><%= submit_tag %></p>
   

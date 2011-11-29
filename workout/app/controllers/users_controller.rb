@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+  before_filter :login_required, :except => [:new, :create, :reset]
   def new
     @user = User.new
   end
@@ -25,6 +25,16 @@ class UsersController < ApplicationController
       redirect_to root_url, :notice => "Your profile has been updated."
     else
       render :action => 'edit'
+    end
+  end
+
+  def reset
+    @email = params[:email]
+    password = (0...50).map{ ('a'..'z').to_a[rand(26)] }.join
+    @user = User.find_by_email(@email)
+    if @user != nil
+      @user.update_attribute(:password, password)
+      UserMailer.reset_password(@user,password).deliver()
     end
   end
 end

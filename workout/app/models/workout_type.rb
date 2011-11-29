@@ -1,5 +1,5 @@
 class WorkoutType < ActiveRecord::Base
-  attr_accessible :plan_id, :name
+  attr_accessible :plan_id, :name, :priority
   belongs_to :plan
   def self.getWrkNames
     arr = Array.new

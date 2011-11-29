@@ -1,6 +1,46 @@
-<p>Name:<%= @exercise.name %></p><br />
-<p>Muscle: <%= @exercise.muscle %></p><br />
-<%= image_tag "#{@exercise.name}.jpg" %><br />
-<br /><strong>Description:</strong>
-<p><%= @exercise.description %></p>
+<style type = "text/css">
+ p {
+   color: white;
+  }
+
+ #innerContainer{
+   text-align: center;
+
+ }
+
+ .workoutImg {
+ border: 1px solid gray;
+ }
+
+ .description {
+background: #8989ba; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, #8989ba 0%, #8989ba 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#8989ba), color-stop(100%,#8989ba)); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover, #8989ba 0%,#8989ba 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover, #8989ba 0%,#8989ba 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover, #8989ba 0%,#8989ba 100%); /* IE10+ */
+background: radial-gradient(center, ellipse cover, #8989ba 0%,#8989ba 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8989ba', endColorstr='#8989ba',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    color: gray; 
+    text-align: left;
+    padding: 5px;
+ }
+
+strong {
+  color: #6e6e6e;
+  font-size: 16px; 
+  font-weight: bold;
+}
+</style>
+<div id = "innerContainer">
+<p><%= @exercise.name %></p>
+<p>Muscle Worked: <%= @exercise.muscle %></p><br />
+<%= image_tag "#{@exercise.name}.jpg", :class => "workoutImg" %><br />
+<br /><strong>Description:</strong><br /><br />
+<p class = "description"><%= @exercise.description %></p>
+</div>
 

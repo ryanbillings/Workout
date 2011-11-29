@@ -1,7 +1,7 @@
 Workout::Application.routes.draw do
   match 'exercises/description' => 'exercises#description'
   match 'exercises/search', :as => :search
-
+  match 'exercises/browse', :as => :browse
   resources :exercises
   resources :days
 
@@ -11,6 +11,7 @@ Workout::Application.routes.draw do
 
   resources :weeks
 
+  match 'user/reset' => 'users#reset', :as => :password_reset
   match 'user/edit' => 'users#edit', :as => :edit_current_user
 
   match 'signup' => 'users#new', :as => :signup
