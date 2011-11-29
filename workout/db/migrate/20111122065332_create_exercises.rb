@@ -5,6 +5,7 @@ class CreateExercises < ActiveRecord::Migration
       t.integer :duration
       t.string :name
       t.string :reps
+      t.string :url
       t.text :description
       t.integer :day_id
       t.timestamps

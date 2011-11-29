@@ -40,6 +40,6 @@ class ExercisesController < ApplicationController
   end
 
   def description
-
+    @exercise = Exercise.where("name = ? AND day_id IS ?", params[:name], nil).first
   end
 end
