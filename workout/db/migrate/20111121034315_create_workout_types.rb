@@ -3,6 +3,7 @@ class CreateWorkoutTypes < ActiveRecord::Migration
     create_table :workout_types do |t|
       t.integer :plan_id
       t.string :name
+      t.integer :priority
       t.timestamps
     end
   end

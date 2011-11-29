@@ -18,7 +18,6 @@ class WorkoutTypesController < ApplicationController
     @workout_type = WorkoutType.new(params[:workout_type])
     @workout_type.plan_id = Plan.find_by_user_id(current_user.id)
     if @workout_type.save
-      rand()
       redirect_to @workout_type, :notice => "Successfully created workout type."
     else
       render :action => 'new'
@@ -32,18 +31,33 @@ class WorkoutTypesController < ApplicationController
   def multi_create
     @workout_types = params[:workout_type_names]
     @errors = Array.new
-    if @workout_types.length > 3
-      @errors.push("You can only choose up to 3 workout types")
-      @workout_types = WorkoutType.getWrkNames
-      render :action => 'new'
-      return
+    
+    @wt1 = params[:workout_type1]
+    @wt2 = params[:workout_type2]
+    @wt3 = params[:workout_type3]
+
+    if !@wt1.empty?
+      wk1 = WorkoutType.new
+      wk1.plan_id = Plan.find_by_user_id(current_user.id)
+      wk1.name = @wt1
+      wk1.priority = 1
+      wk1.save
     end
-    for wrkout_type in @workout_types
-      temp = WorkoutType.new
-      temp.plan_id = Plan.find_by_user_id(current_user.id)
-      temp.name = wrkout_type
-      temp.save
+    if !@wt2.empty? && !@wt1.empty?
+      wk2 = WorkoutType.new
+      wk2.plan_id = Plan.find_by_user_id(current_user.id)
+      wk2.name = @wt2
+      wk2.priority = 2
+      wk2.save
     end
+    if !@wt3.empty? && !@wt2.empty? && !@wt1.empty?
+      wk3 = WorkoutType.new
+      wk3.plan_id = Plan.find_by_user_id(current_user.id)
+      wk3.name = @wt3
+      wk3.priority = 3
+      wk3.save
+    end
+
     redirect_to :root, :notice => "Successfully selected workout types."
   end
       

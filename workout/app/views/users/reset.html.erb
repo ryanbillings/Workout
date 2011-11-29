@@ -1,0 +1,9 @@
+<% title 'Password Reset' %>
+
+<p>Please enter your email</p>
+
+<%= form_tag :action => "reset", :remote => true do %>
+  <p>Email:</p>
+  <%= text_field_tag "email"%><br />
+<%= submit_tag %>
+<% end %>
