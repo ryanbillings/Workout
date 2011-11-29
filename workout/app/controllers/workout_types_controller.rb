@@ -44,6 +44,7 @@ class WorkoutTypesController < ApplicationController
       temp.name = wrkout_type
       temp.save
     end
+    generate_populate()
     redirect_to :root, :notice => "Successfully selected workout types."
   end
       
