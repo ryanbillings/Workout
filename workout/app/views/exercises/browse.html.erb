@@ -110,7 +110,25 @@
 			</li>
 		</ul>
 	</li>
-	<li><a href="#" >Cardio</a></li>
-	<li><a href="#" >Plyometrics</a></li>
+	<li><a href="#" >Cardio</a>
+	<ul>
+			<li><a href="#">Endurance</a>
+				<ul>
+                                       <% for i in @endurance %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+				</ul>
+			</li>
+			<li><a href="#">Explosion</a>
+				<ul>
+                                       <% for abdominal in @explosion %>
+					<li><%= link_to "#{abdominal.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => abdominal.name %></li>
+				       <% end %>
+                                </ul>
+			</li>
+		</ul>
+</li>
 </ul>
 </div>

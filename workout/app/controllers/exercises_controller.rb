@@ -65,6 +65,9 @@ class ExercisesController < ApplicationController
     @obliques = Exercise.where("muscle = ? AND day_id IS ?", "Obliques", nil)
     @lower_backs = Exercise.where("muscle = ? AND day_id IS ?", "Lower Back", nil)
     @abdominals = Exercise.where("muscle = ? AND day_id IS ?", "Abdominal", nil)
+
+    @endurance = Exercise.where("muscle = ? AND day_id IS ?", "Endurance", nil)
+    @explosion = Exercise.where("muscle = ? AND day_id IS ?", "Explosion", nil)
   end
 
 end

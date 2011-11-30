@@ -50,8 +50,6 @@ strong {
 <% if @exercise.url %>
 <iframe width="460" height="315" src="http://www.youtube.com/embed/<%= @exercise.url %>" frameborder="0" allowfullscreen></iframe>
 <br />
-<% else %>
-<%= image_tag "#{@exercise.name}.jpg", :class => "workoutImg" %><br />
 <% end %>
 <br /><strong>Description:</strong><br /><br />
 <p class = "description"><%= @exercise.description %></p>
