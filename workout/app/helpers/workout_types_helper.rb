@@ -182,6 +182,11 @@ module WorkoutTypesHelper
         return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Obliques",corl))
         return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Lower Back",corl))
       end
+        if wk.name == "Cardio"
+            wk.min_time = 10
+            return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Explosion",corl))
+            return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Endurance",corl))
+        end  
     else
       if wk.name == "Upper Body"
         wk.min_time = 15
@@ -204,6 +209,11 @@ module WorkoutTypesHelper
         return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Obliques",corl))
         return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Lower Back",corl))
       end
+      if wk.name == "Cardio"
+        wk.min_time = 10
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Explosion",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Endurance",corl))
+      end  
     end
  
     return return_array
