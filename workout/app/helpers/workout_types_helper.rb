@@ -118,7 +118,6 @@ module WorkoutTypesHelper
       exs = 2
       timetmp += return_array.at(1).duration
     end
-   
     while (timetmp < time) && ((time-timetmp) > mintime)
       index = 0
       for ex in al

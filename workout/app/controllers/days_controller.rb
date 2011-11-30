@@ -8,6 +8,11 @@ class DaysController < ApplicationController
 
   def show
     @day = Day.find(params[:id])
+    if @day.plan.user_id != current_user.id
+      flash.now[:alert] = "You do not have access to this page."
+      redirect_to :root
+      return
+    end
     @excersises = @day.exercises
   end
 
@@ -27,6 +32,12 @@ class DaysController < ApplicationController
 
   def edit
     @day = Day.find(params[:id])
+    if @day.plan.user_id != current_user.id
+      flash.now[:alert] = "You do not have access to this page."
+      redirect_to :root
+      return
+    end
+
   end
 
   def update

@@ -1,6 +1,13 @@
+<%= javascript_include_tag 'loading' %>
 <%# form_for @workout_type do |f| %>
-<%= form_tag :action => "multi_create", :remote => true do %>
+<p style = "color:gray;width: 300px; font-size: 14px; font-weight: bold;">Please select 1-3 workout types that you want to focus on.
+ <br /> <br />The first selected workout type will be the highest priority, the second will have medium priority and the third will have lowest priority.</p><br />
+<%= form_tag :action => "multi_create", :remote => true  do %>
   <%# f.error_messages %>
+  <div style = "top: 0px; left: 0px; position: absolute; width: 100%; height: 100%; background: white; text-align: center;" id = "loading_image">
+  <%= image_tag 'loading_image.gif', :id => 'loading_image' %><br /><br />
+  <span style = "font-weight:bold;">Please wait while we calculate the optimal workout that fits your schedule</span>
+  </div>
   <ul>
   <% @errors.each do |error| %>
      <%= error %>
@@ -18,6 +25,5 @@
 
    <%# end %>
    </ul>
-  <p><%= submit_tag %></p>
-  
+  <p><%= submit_tag 'Submit', :onClick => "create()" %></p>
 <% end %>

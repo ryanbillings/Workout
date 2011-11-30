@@ -8,8 +8,6 @@ class WorkoutType < ActiveRecord::Base
     arr.push("Lower Body")
     arr.push("Core")
     arr.push("Cardio")
-    arr.push("Yoga")
-    arr.push("Plyometrics")
     return arr
   end
 

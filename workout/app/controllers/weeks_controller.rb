@@ -1,4 +1,6 @@
 class WeeksController < ApplicationController
+ before_filter :login_required
+
   def index
     @weeks = Week.all
   end

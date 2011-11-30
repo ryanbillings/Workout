@@ -4,4 +4,8 @@ class Plan < ActiveRecord::Base
   has_many :workout_types
   has_many :days
   has_many :excersises, :through => :days
+
+  validates_presence_of :start_date
+  validates_presence_of :end_date
+  validates_datetime :end_date, :after => :start_date, :after_message => 'must be after start date'
 end

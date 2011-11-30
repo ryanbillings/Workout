@@ -1,5 +1,7 @@
 include WorkoutTypesHelper
 class WorkoutTypesController < ApplicationController
+ before_filter :login_required
+
   def index
     @workout_types = WorkoutType.all
   end
