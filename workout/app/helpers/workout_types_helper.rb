@@ -1,24 +1,5 @@
 module WorkoutTypesHelper
-=begin
-  def rand
-    i=0
-    plan_id=Plan.find_by_user_id(current_user.id).id
-    while(i!=50)
-      i+=1
-      day=Day.new
-      day.plan_id=plan_id
-      day.duration=i
-      day.save!
-      wrk=Excersise.new
-      wrk.day_id=day.id
-      wrk.save!
-      wrk2=Excersise.new
-      wrk2.day_id=day.id
-      wrk2.save!
-      
-    end
-  end
-=end
+
   def generate_populate
 
     @workout_types = current_user.plan.workout_types
@@ -27,45 +8,53 @@ module WorkoutTypesHelper
     @end_date = current_user.plan.end_date
     outarr = Array.new
     @mintimes = Array.new
-    @workout_types.sort_by!(|ex|ex.priority) 
+    @workout_types.sort_by!{|ex|ex.priority}
       
+    priority_exercises = Array.new
+
     # Loop through workout types
+    i = 0
     for wk in @workout_types
       # Get corresponding 'default' workouts
+      priority_exercises = get_exercise(wk,true)
+      outarr[i] = priority_exercises
+      priority_exercises = get_exercise(wk,false)
+      outarr[i + 1] = priority_exercises
       @mintimes.push(wk.min_time)
-      priority_excersises = get_exercise(wk,true)
-      outarr.push(priority_exercises)
-      priority_excersises = get_exercise(wk,false)
-      outarr.push(priority_exercises)
+      i += 2
     end
 
     counter = 1
     @start_date.upto(@end_date) do |day|
       alocArray = Array.new
-      case day.DAYS_INTO_WEEK
-          when 0
-          alocArray = alocHelper(@week.monday,outarr)
-          when 1
-          alocArray = alocHelper(@week.tuesday,outarr)
-          when 2
-          alocArray = alocHelper(@week.wednesday,outarr)
-          when 3
-          alocArray = alocHelper(@week.thursday,outarr)
-          when 4
-          alocArray = alocHelper(@week.friday,outarr)
-          when 5
-          alocArray = alocHelper(@week.saturday,outarr)
-          when 6
-          alocArray = alocHelper(@week.sunday,outarr)
+      if day.monday?
+            alocArray = alocHelper(@week.monday,outarr)
+      elsif day.tuesday?
+            alocArray = alocHelper(@week.tuesday,outarr)
+      elsif day.wednesday?
+            alocArray = alocHelper(@week.wednesday,outarr)
+      elsif day.thursday?
+            alocArray = alocHelper(@week.thursday,outarr)
+      elsif day.friday?
+            alocArray = alocHelper(@week.friday,outarr)
+      elsif day.saturday?
+            alocArray = alocHelper(@week.saturday,outarr)
+      elsif day.sunday?
+            alocArray = alocHelper(@week.sunday,outarr)
       end
       if alocArray != nil
         newday = Day.new
-        newday.plan_id = current_user.plan_id
+        newday.plan_id = current_user.plan.id
         newday.date = day
         newday.name = "Workout# #{counter}"
         newday.save!
         for ex in alocArray
-          newex = ex.clone
+          puts ex.name
+          newex = Exercise.new
+          newex.name = ex.name
+          newex.muscle = ex.muscle
+          newex.description = ex.description
+          newex.url = ex.url
           newex.day_id = newday.id
           newex.save!
         end
@@ -83,18 +72,16 @@ module WorkoutTypesHelper
       if time < 30
         time = 30
       end
-      
+
       if (time >= 30 && time <= 59) || @workout_types.length == 1
-        return_array | getter(time,outarr.at(0),outarr.at(1),@mintimes.at(0))
-      end
+        return_array = return_array + getter(time,outarr.at(0),outarr.at(1),@mintimes.at(0))
       elsif (time >= 60 && time <= 89) || @workout_types.length == 2
-          return_array | getter(0.6*time,outarr.at(0),outarr.at(1),@mintimes.at(0))
-          return_array | getter(0.4*time,outarr.at(2),outarr.at(3),@mintimes.at(1))
-      end
+          return_array = return_array + getter(0.6*time,outarr.at(0),outarr.at(1),@mintimes.at(0))
+          return_array = return_array + getter(0.4*time,outarr.at(2),outarr.at(3),@mintimes.at(1))
       else
-          return_array | getter(0.5*time,outarr.at(0),outarr.at(1),@mintimes.at(0))
-          return_array | getter(0.3*time,outarr.at(2),outarr.at(3),@mintimes.at(1))
-          return_array | getter(0.2*time,outarr.at(4),outarr.at(5),@mintimes.at(2))
+          return_array = return_array + getter(0.5*time,outarr.at(0),outarr.at(1),@mintimes.at(0))
+          return_array = return_array + getter(0.3*time,outarr.at(2),outarr.at(3),@mintimes.at(1))
+          return_array = return_array + getter(0.2*time,outarr.at(4),outarr.at(5),@mintimes.at(2))
       end
       
       return return_array
@@ -104,8 +91,8 @@ module WorkoutTypesHelper
     return_array = Array.new
     exs = 1  
     timetmp = 0
-      
-    return_array.push(ac.at(0))
+    
+    return_array.push(ac.at(0).clone)
     ac.delete_at(0)
     ac.push(return_array.at(0))
     timetmp += return_array.at(0).duration
@@ -138,47 +125,53 @@ module WorkoutTypesHelper
           
   def get_exercise(wk,corl)
     return_array = Array.new
-    if current_user.plan.gym == 1
+    if current_user.plan.gym
       if wk.name == "Upper Body"
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Chest",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Bicep",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Tricep",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Shoulder",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Back",corl))
+        wk.min_time = 15
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Chest",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Bicep",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Tricep",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Shoulder",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Back",corl))
       end
       if wk.name == "Lower Body"
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hamstring",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Gluteal",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Quadricep",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Calves",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hips",corl))
+        wk.min_time = 15
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hamstring",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Gluteal",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Quadricep",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Calves",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hips",corl))
       end
       if wk.name == "Core"
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Abdominal",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Obliques",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Lower Back",corl))
+        wk.min_time = 5
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Abdominal",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Obliques",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Lower Back",corl))
       end
-    end
     else
       if wk.name == "Upper Body"
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Chest",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Bicep",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Tricep",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Shoulder",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Back",corl))
+        wk.min_time = 15
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Chest",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Bicep",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Tricep",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Shoulder",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Back",corl))
       end
       if wk.name == "Lower Body"
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Hamstring",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Gluteal",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Quadricep",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Calves",corl))
+        wk.min_time = 15
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Hamstring",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Gluteal",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Quadricep",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Calves",corl))
       end
       if wk.name == "Core"
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Abdominal",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Obliques",corl))
-        return_array.push(Excersise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Lower Back",corl))
+        wk.min_time = 5
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Abdominal",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Obliques",corl))
+        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Lower Back",corl))
       end
     end
+ 
     return return_array
   end
 
