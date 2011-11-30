@@ -50,6 +50,7 @@ class WorkoutTypesController < ApplicationController
       wk2.priority = 2
       wk2.save
     end
+
     if !@wt3.empty? && !@wt2.empty? && !@wt1.empty?
       wk3 = WorkoutType.new
       wk3.plan_id = Plan.find_by_user_id(current_user.id)
@@ -58,6 +59,7 @@ class WorkoutTypesController < ApplicationController
       wk3.save
     end
 
+    generate_populate()
     redirect_to :root, :notice => "Successfully selected workout types."
   end
       
