@@ -109,7 +109,11 @@ module WorkoutTypesHelper
       exs = 2
       timetmp += return_array.at(1).duration
     end
-    
+   
+    for a in al
+      puts a.name
+      puts a.duration
+    end 
     while (timetmp < time) && ((time-timetmp) > mintime)
       index = 0
       for ex in al
@@ -141,39 +145,39 @@ module WorkoutTypesHelper
       end
       if wk.name == "Lower Body"
         wk.min_time = 15
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hamstring",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Gluteal",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Quadricep",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Calves",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hips",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hamstring",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Gluteal",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Quadricep",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Calves",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Hips",corl))
       end
       if wk.name == "Core"
         wk.min_time = 5
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Abdominal",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Obliques",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Lower Back",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Abdominal",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Obliques",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ?", nil, "Lower Back",corl))
       end
     else
       if wk.name == "Upper Body"
         wk.min_time = 15
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Chest",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Bicep",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Tricep",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Shoulder",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Back",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Chest",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Bicep",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Tricep",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Shoulder",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Back",corl))
       end
       if wk.name == "Lower Body"
         wk.min_time = 15
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Hamstring",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Gluteal",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Quadricep",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Calves",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Hamstring",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Gluteal",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Quadricep",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Calves",corl))
       end
       if wk.name == "Core"
         wk.min_time = 5
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Abdominal",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Obliques",corl))
-        return_array.push(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Lower Back",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Abdominal",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Obliques",corl))
+        return_array = return_array.concat(Exercise.where("day_id IS ? AND muscle = ? AND core = ? AND gym = 0", nil, "Lower Back",corl))
       end
     end
  
