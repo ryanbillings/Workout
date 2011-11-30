@@ -9,7 +9,7 @@ module WorkoutTypesHelper
     outarr = Array.new
     @mintimes = Array.new
     @workout_types.sort_by!{|ex|ex.priority}
-      
+    @color_array = Day.getColor
     priority_exercises = Array.new
 
     # Loop through workout types
@@ -47,17 +47,22 @@ module WorkoutTypesHelper
         newday.plan_id = current_user.plan.id
         newday.date = day
         newday.name = "Workout# #{counter}"
+        newday.color = @color_array[counter%7]
+        duration = 0
         newday.save!
         for ex in alocArray
-          puts ex.name
           newex = Exercise.new
           newex.name = ex.name
+          newex.duration = ex.duration
           newex.muscle = ex.muscle
+          newex.reps = ex.reps
           newex.description = ex.description
           newex.url = ex.url
           newex.day_id = newday.id
           newex.save!
+          duration += newex.duration
         end
+        newday.update_attribute(:duration, duration)
         counter+=1
       end
     end
