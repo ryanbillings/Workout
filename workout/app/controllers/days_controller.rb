@@ -49,9 +49,5 @@ class DaysController < ApplicationController
     end
   end
 
-  def destroy
-    @day = Day.find(params[:id])
-    @day.destroy
-    redirect_to days_url, :notice => "Successfully destroyed day."
-  end
+
 end

@@ -1,5 +1,8 @@
 <%= form_for @plan do |f| %>
   <%= f.error_messages %>
+  <p style = "font-weight:bold; color:black; width:250px;">Please enter in the start date and end date of your workout.<br />
+  <br />Also indicate if you will have gym access during your workout</p>
+  <br />
   <p>
     <%= f.label "Gym access available?"%><br />
     <%= f.check_box :gym %>
