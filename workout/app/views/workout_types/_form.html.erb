@@ -10,7 +10,7 @@
   </div>
   <ul>
   <% @errors.each do |error| %>
-     <%= error %>
+     <span style="color:red;"><%= error %></span><br />
   <% end %>
   <%# for wrkout in @workout_types %>
     <li>

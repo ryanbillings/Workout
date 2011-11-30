@@ -139,6 +139,7 @@ module WorkoutTypesHelper
   def getter_wrap(time, al, mintime)
   timetmp = 0
   return_array = Array.new
+  
   while (timetmp < time) && ((time-timetmp) >= mintime)
       index = 0
       for ex in al

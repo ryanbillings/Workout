@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(:version => 20111122065332) do
     t.date     "date"
     t.string   "name"
     t.float    "duration"
-    t.boolean  "complete"
     t.string   "color"
     t.datetime "created_at"
     t.datetime "updated_at"

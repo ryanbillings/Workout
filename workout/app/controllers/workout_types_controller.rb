@@ -44,6 +44,11 @@ class WorkoutTypesController < ApplicationController
     @wt2 = params[:workout_type2]
     @wt3 = params[:workout_type3]
 
+    if @wt1 == ""
+      @errors.push("The first field must not be blank!")
+      render :action => 'new'
+      return
+    end
     if !@wt1.empty?
       wk1 = WorkoutType.new
       wk1.plan_id = current_user.plan.id
