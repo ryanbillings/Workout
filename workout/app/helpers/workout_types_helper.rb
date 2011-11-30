@@ -46,7 +46,7 @@ module WorkoutTypesHelper
         newday = Day.new
         newday.plan_id = current_user.plan.id
         newday.date = day
-        newday.name = "Workout# #{counter}"
+        newday.name = "Workout ##{counter}"
         newday.color = @color_array[counter%7]
         duration = 0
         newday.save!

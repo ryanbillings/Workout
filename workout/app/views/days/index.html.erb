@@ -1,7 +1,15 @@
 <%= stylesheet_link_tag 'day_index' %>
 <%= javascript_include_tag 'hover' %>
+
+<style type = "text/css">
+ .workout2 {
+  width:264px;
+  height:60px;
+  margin-top: -20px;
+  } 
+</style>
 <div id="sideModules">
-  <%= link_to(image_tag('new_day_button.png'), new_day_path) %>
+  <%= link_to(image_tag('workout1.png'), :browse) %>
   <div id="notifications">
     <h3>Notifications:</h3>
     <!-- Show all pending invites -->
@@ -16,7 +24,7 @@
 </div><!-- end sideModules -->
 
 <div id="mainModule">
-  <%= image_tag 'my_days_title.png' %>
+  <%= image_tag 'workout2.png', :class => "workout2" %>
   <div id="view">
     <%= link_to "Calendar", calendar_path %>
   </div><!-- end view -->
@@ -29,7 +37,7 @@
       <% for day in @mydays %>
         <tr onclick="location.href='days/<%= day.id %>'" class = "day_list">
           <td class="dayName"><%= day.name %></td>
-  	  <td class="dayDate"><%= day.duration %></td>
+  	  <td class="dayDate"><%= day.duration %> min</td>
           <td class="dayTime"><%= day.format_date(day.date) %></td>
         </tr>
       <% end %>

@@ -2,7 +2,7 @@ require 'will_paginate/array'
 class DaysController < ApplicationController
   before_filter :login_required
   def index
-    @mydays = Day.where("date > ? and plan_id = ?", Time.now.strftime("%Y-%m-%d"), current_user.plan.id).paginate :page => params[:page], :per_page => 6
+    @mydays = Day.where("date >= ? and plan_id = ?", Time.now.strftime("%Y-%m-%d"), current_user.plan.id).paginate :page => params[:page], :per_page => 6
     @notification = Day.where("date = ? and plan_id = ?", Time.now.strftime("%Y-%m-%d"), current_user.plan.id).first
   end
 

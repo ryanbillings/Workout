@@ -1,11 +1,33 @@
+<%= stylesheet_link_tag 'datagrid' %>
 <style type = "text/css">
-  .workout_image {
-    height: 200px;
-    width: 200px;
-    border: 1px solid gray;
+  p {
+    font-size: 14px;
+    color: white;
+  }
+  strong {
+    font-weight: bold;
+  }
+
+  .exercises {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+ background: #f4f4f4; /* Old browsers */
+        background: -moz-linear-gradient(top,  #f4f4f4 0%, #d9d9d9 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f4f4f4), color-stop(100%,#d9d9d9)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* IE10+ */
+        background: linear-gradient(top,  #f4f4f4 0%,#d9d9d9 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4f4f4', endColorstr='#d9d9d9',GradientType=0 ); /* IE6-9 */
+        color: #6e6e6e;
+        font-weight: bold;
+        height: 50px;
+        padding: 5px;
+
   }
 </style>
-<% title "Day" %>
 
 <p>
   <strong>Date:</strong>
@@ -15,22 +37,26 @@
   <strong>Duration:</strong>
   <%= @day.duration %> minutes
 </p>
-<p>
-  <strong>Complete:</strong>
-  <%= @day.complete %>
-</p>
-<br />
-<div>Excersises:
+<br /><br /><br />
+<span class = "exercises">Exercises:</span><br /><br />
+<div>
+<table class = "datagrid" style = "border: 1px solid gray;">
+ <thead class = "datagrid">
+  <th>Name</th>
+  <th>Muscle</th>
+  <th>Reps</th>
+  <th>Duration</th>
+  </thead>
 <% for excersise in @excersises %>
-  <p>Muscle:<%= excersise.muscle %></p>
-  <p>Name:<%= excersise.name %></p>
-  <p>Reps:<%= excersise.reps %></p>
-  <p>Duration: <%= excersise.duration %> minutes</p>
-  <p><%= link_to image_tag("#{excersise.name}.jpg", :class => "workout_image"), {:action => 'description', :controller => 'exercises', :name => excersise.name} %></p>
+   <tr class = "<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+  <td><%= link_to excersise.name, {:action => 'description', :controller => 'exercises', :name  => excersise.name} %></td>
+  <td><%= excersise.muscle %></td>
+  <td><%= excersise.reps %></td>
+  <td><%= excersise.duration %> minutes</td>
+  </tr>
 <% end %>
+</table>
 </div>
-<p>
-  <%= link_to "Edit", edit_day_path(@day) %> |
-  <%= link_to "Destroy", @day, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", days_path %>
-</p>
+<br /><br />
+   <%= link_to(image_tag('edit_button.png'), edit_day_path(@day)) %>
+
