@@ -118,7 +118,7 @@ module WorkoutTypesHelper
       exs = 2
       timetmp += return_array.at(1).duration
     end
-    while (timetmp < time) && ((time-timetmp) > mintime)
+    while (timetmp < time) && ((time-timetmp) >= mintime)
       index = 0
       for ex in al
         if ex.duration <= (time - timetmp)
@@ -139,7 +139,10 @@ module WorkoutTypesHelper
   def getter_wrap(time, al, mintime)
   timetmp = 0
   return_array = Array.new
-  while (timetmp < time) && ((time-timetmp) > mintime)
+  puts time
+  puts mintime
+  
+  while (timetmp < time) && ((time-timetmp) >= mintime)
       index = 0
       for ex in al
         if ex.duration <= (time - timetmp)
