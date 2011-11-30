@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if @user != nil
       @user.update_attribute(:password, password)
       UserMailer.reset_password(@user,password).deliver()
+      redirect_to :login, :notice => "Your password has been reset."
     end
-    redirect_to :root, :notice => "Your password has been reset."
   end
 end
