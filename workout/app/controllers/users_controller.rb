@@ -36,5 +36,6 @@ class UsersController < ApplicationController
       @user.update_attribute(:password, password)
       UserMailer.reset_password(@user,password).deliver()
     end
+    redirect_to :root, :notice => "Your password has been reset."
   end
 end
