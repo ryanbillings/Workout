@@ -49,6 +49,13 @@ class WorkoutTypesController < ApplicationController
       render :action => 'new'
       return
     end
+
+    if !@wt1.empty? and !@wt3.empty? and @wt2.empty?
+     @errors.push("The please move the third field to the second field")
+     render :action => 'new'
+     return
+    end
+
     if !@wt1.empty?
       wk1 = WorkoutType.new
       wk1.plan_id = current_user.plan.id
