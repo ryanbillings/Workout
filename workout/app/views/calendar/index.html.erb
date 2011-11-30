@@ -2,19 +2,31 @@
 <%= stylesheet_link_tag "event_calendar" %>
 <%= stylesheet_link_tag 'day_index' %>
 <%= javascript_include_tag :event_calendar %>
+<style type = "text/css">
+ .workout2 {
+  width:264px;
+  height:60px;
+  margin-top: -20px;
+  }
+</style>
 
 <div id="sideModules">
-  <%= link_to(image_tag('new_day_button.png'), new_day_path) %>
+  <%= link_to(image_tag('workout1.png'), new_day_path) %>
   <div id="notifications" style="height: 200px;">
     <h3>Workout Details:</h3>
 <!-- Create hidden divs with meeting locations, which will be highlighted on hover -->
 <% for day in @days %>
-  <div style = "background-color:#ffffff; height: 150px; width: 150px; margin-left: 6px;
+  <div style = "background-color:#ffffff; height: 150px; width: 150px; margin-left: 6px; top: 300px; position: absolute;
 opacity: 0.6; filter:alpha(opacity=60);visibility:hidden; padding:3px;border:1px solid gray; text-align:center; font-size:12px; color:#6e6e6e;" id = "<%=day.id%>">
     <span style = "font-weight:bold; color:#16a8cc;"><%= day.name%></span><br /><br />
-    Duration: <%= day.duration %><br />
-    Date: <%= Day.format_time(day.date) %><br />
+    Duration: <%= day.duration %> min<br />
+    Date: <%= Day.format_date(day.date) %><br />
+    <% counter = 0 %>
     <% for ex in day.exercises %><br />
+    <% if counter == 2 %>
+    <% break %>
+    <% end %>
+    <% counter += 1 %>
     <span style = "font-weight:bold;">Exercise: <%= ex.name %></span><br />
     Muscle: <%= ex.muscle %><br />
     Reps: <%= ex.reps %><br />
@@ -26,7 +38,7 @@ opacity: 0.6; filter:alpha(opacity=60);visibility:hidden; padding:3px;border:1px
 </div><!-- end sideModules -->
 
 <div id = "mainModule">
-  <%= image_tag 'my_days_title.png' %>
+  <%= image_tag 'workout2.png', :class => "workout2" %>
   <div id="view">
     <%= link_to "List", days_path %>
   </div>

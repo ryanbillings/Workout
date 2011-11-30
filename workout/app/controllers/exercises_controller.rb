@@ -45,6 +45,24 @@ class ExercisesController < ApplicationController
 
   def search
     query = params[:search]
-    @exercises = Exercise.where("name LIKE ? OR muscle LIKE ? AND day_id IS ?","%#{query}%","#{query}%",nil).paginate :page => params[:page], :per_page => 6
+    @exercises = Exercise.where("(name LIKE ? OR muscle LIKE ?) AND day_id IS ?","%#{query}%","#{query}%",nil).paginate :page => params[:page], :per_page => 6
   end
+
+  def browse
+    @chest = Exercise.where("muscle = ? AND day_id IS ?", "Chest", nil)
+    @biceps = Exercise.where("muscle = ? AND day_id IS ?", "Bicep", nil)
+    @shoulders = Exercise.where("muscle = ? AND day_id IS ?", "Shoulder", nil)
+    @triceps = Exercise.where("muscle = ? AND day_id IS ?", "Tricep", nil)
+    
+    @quadriceps = Exercise.where("muscle = ? AND day_id IS ?", "Quadricep", nil)
+    @hamstrings = Exercise.where("muscle = ? AND day_id IS ?", "Hamstring", nil)
+    @gluteal = Exercise.where("muscle = ? AND day_id IS ?", "Gluteal", nil)
+    @calves = Exercise.where("muscle = ? AND day_id IS ?", "Calves", nil)
+    @hips = Exercise.where("muscle = ? AND day_id IS ?", "Hips", nil)
+    
+    @obliques = Exercise.where("muscle = ? AND day_id IS ?", "Obliques", nil)
+    @lower_backs = Exercise.where("muscle = ? AND day_id IS ?", "Lower Back", nil)
+    @abdominals = Exercise.where("muscle = ? AND day_id IS ?", "Abdominal", nil)
+  end
+
 end

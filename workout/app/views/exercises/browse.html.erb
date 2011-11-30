@@ -1,22 +1,116 @@
-<p>Upper Body</p>
-  <ul>
-  <li>Chest</li>
-  <li>Biceps</li>
-  <li>Triceps</li>
-  <li>Shoulders</li>
-  <li>Back</li>
-  </ul>
-<p>Lower Body</p>
-  <ul>
-  <li>Gluteal</li>
-  <li>Quadriceps</li>
-  <li>Hamstrings</li>
-  <li>Hips</li>
-  <li>Calves</li>
-  </ul>
-<p>Core</p>
-  <ul>
-  <li>Abdominal</li>
-  <li>Obliques</li>
-  <li>Lower Back</li>
-  </ul>
+<%= javascript_include_tag 'menu' %>
+<%= stylesheet_link_tag 'drop-down-menu.css' %>
+<div style = "height: 1000px; text-align: center;">
+<ul id="menu">
+	<li><a href="#">Upper Body</a>
+		<ul>
+			<li><a href="#">Chest</a>
+				<ul>
+                                       <% for i in @chest %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+				</ul>
+			</li>
+			<li><a href="#">Biceps</a>
+				<ul>
+                                       <% for abdominal in @biceps %>
+					<li><%= link_to "#{abdominal.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => abdominal.name %></li>
+				       <% end %>
+                                </ul>
+			</li>
+ 			<li><a href="#">Triceps</a>
+				<ul>
+                                     <% for i in @triceps %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+		                </ul>
+			</li>
+ 			<li><a href="#">Shoulders</a>
+				<ul>
+                                     <% for i in @shoulders %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+		                </ul>
+			</li>
+		</ul>
+</li>
+	<li><a href="#">Lower Body</a>
+		<ul>
+			<li><a href="#">Quadriceps</a>
+				<ul>
+                                       <% for i in @quadriceps %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+				</ul>
+			</li>
+			<li><a href="#">Gluteal</a>
+				<ul>
+                                       <% for abdominal in @gluteal %>
+					<li><%= link_to "#{abdominal.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => abdominal.name %></li>
+				       <% end %>
+                                </ul>
+			</li>
+ 			<li><a href="#">Hamstring</a>
+				<ul>
+                                     <% for i in @hamstrings %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+		                </ul>
+			</li>
+ 			<li><a href="#">Calves</a>
+				<ul>
+                                     <% for i in @calves %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+		                </ul>
+			</li>
+                	<li><a href="#">Hips</a>
+				<ul>
+                                     <% for i in @hips %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+		                </ul>
+			</li>
+		</ul>
+</li>
+	<li><a href="#">Core</a>
+		<ul>
+			<li><a href="#">Obliques</a>
+				<ul>
+                                       <% for i in @obliques %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+				</ul>
+			</li>
+			<li><a href="#">Abdominals</a>
+				<ul>
+                                       <% for abdominal in @abdominals %>
+					<li><%= link_to "#{abdominal.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => abdominal.name %></li>
+				       <% end %>
+                                </ul>
+			</li>
+ 			<li><a href="#">Lower Back</a>
+				<ul>
+                                     <% for i in @lower_backs %>
+					<li><%= link_to "#{i.name}", 
+                                             :action => 'description', :controller => 'exercises', :name => i.name %></li>
+				       <% end %>
+		                </ul>
+			</li>
+		</ul>
+	</li>
+	<li><a href="#" >Cardio</a></li>
+	<li><a href="#" >Plyometrics</a></li>
+</ul>
+</div>

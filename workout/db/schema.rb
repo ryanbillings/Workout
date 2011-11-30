@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20111122065332) do
     t.string   "name"
     t.float    "duration"
     t.boolean  "complete"
+    t.string   "color"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20111122065332) do
     t.integer  "plan_id"
     t.string   "name"
     t.integer  "priority"
+    t.integer  "min_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

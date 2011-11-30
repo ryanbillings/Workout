@@ -12,6 +12,7 @@ class CreateExercises < ActiveRecord::Migration
       t.boolean :core
       t.timestamps
     end
+
 Exercise.create :muscle => "Chest", :name => "Bench", :reps => "3x10", :duration => 15, :gym => 1, 
                   :core => true, :description => "Setup for the barbell bench press by setting the weight of the bar rack (if it's adjustable) and adding the weight plates you want to use. Lay down on your back with your feet firmly planted on the floor. Grasp the bar with an overhand grip (palms facing forward) with your hands at wider than shoulder width. Take the bar off the rack. Slowly lower the bar straight down to the middle of your chest. Don't let the bar touch your chest! Pause, then slowly raise the bar back up. Do not lock your elbows out or rest at the top, go straight back into your next rep. Repeat this process for your desire reps."
   
@@ -110,7 +111,6 @@ Exercise.create :muscle => "Lower back", :name => "Reverse plank", :reps => "3x2
 Exercise.create :muscle => "Obliques", :name => "Woodchop", :reps => "3x25", :duration => 10, :gym => 1, :core => false, :description => "Grasp stirrup from shoulder height cable pulley with both hands. Step and turn lower body away from pulley until near arm is horizontal and straight. Position feet wide apart facing away from pulley, furthest foot further away from pulley. Raise heel of nearest foot off floor. Bend knees of both legs slightly. Place far hand over other hand or interlace fingers. Keeping arms straight, rotate torso to opposite side until cable makes contact with shoulder. Return to original position and repeat. Continue with opposite side."
 
 Exercise.create :muscle => "Abdominal", :name => "JackKnife", :reps => "3x25", :duration => 10, :gym => 0, :core => false, :description => "Sit on floor or mat. Lie supine with hands to sides. Simultaneously raise knees and torso until hips and knees are flexed. Return to starting position with waist, hips and knees extended. Repeat."
-
   end
 
   def self.down

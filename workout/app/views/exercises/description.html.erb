@@ -10,6 +10,8 @@
 
  .workoutImg {
  border: 1px solid gray;
+ height: 300px;
+ width: 300px;
  }
 
  .description {
@@ -25,7 +27,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8989ba', end
     -webkit-border-radius: 5px;
     -khtml-border-radius: 5px;
     border-radius: 5px;
-    color: gray; 
+    color: white; 
     text-align: left;
     padding: 5px;
  }
@@ -35,11 +37,22 @@ strong {
   font-size: 16px; 
   font-weight: bold;
 }
+
+#name {
+ font-size: 20px;
+ font-weight: bold;
+ color: #356aa0;
+}
 </style>
 <div id = "innerContainer">
-<p><%= @exercise.name %></p>
+<p id = "name"><%= @exercise.name %></p>
 <p>Muscle Worked: <%= @exercise.muscle %></p><br />
+<% if @exercise.url %>
+<iframe width="460" height="315" src="http://www.youtube.com/embed/<%= @exercise.url %>" frameborder="0" allowfullscreen></iframe>
+<br />
+<% else %>
 <%= image_tag "#{@exercise.name}.jpg", :class => "workoutImg" %><br />
+<% end %>
 <br /><strong>Description:</strong><br /><br />
 <p class = "description"><%= @exercise.description %></p>
 </div>
