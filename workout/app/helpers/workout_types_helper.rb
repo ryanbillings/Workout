@@ -89,6 +89,15 @@ module WorkoutTypesHelper
           return_array = return_array + getter(0.2*time,outarr.at(4),outarr.at(5),@mintimes.at(2))
       end
       
+      timeCount = 0
+      for arr in return_array
+        timeCount += arr.duration
+      end
+
+      if timeCount >= @mintimes.at(0)
+        return_array = return_array + getter_wrap(time-timeCount,outarr.at(1),@mintimes.at(0))
+      end
+
       return return_array
   end
     
@@ -110,14 +119,10 @@ module WorkoutTypesHelper
       timetmp += return_array.at(1).duration
     end
    
-    for a in al
-      puts a.name
-      puts a.duration
-    end 
     while (timetmp < time) && ((time-timetmp) > mintime)
       index = 0
       for ex in al
-        if ex.duration < (time - timetmp)
+        if ex.duration <= (time - timetmp)
           return_array.push(ex)
           timetmp += ex.duration
           exs += 1
@@ -131,7 +136,27 @@ module WorkoutTypesHelper
     
     return return_array
   end
-          
+  
+  def getter_wrap(time, al, mintime)
+  timetmp = 0
+  return_array = Array.new
+  while (timetmp < time) && ((time-timetmp) > mintime)
+      index = 0
+      for ex in al
+        if ex.duration <= (time - timetmp)
+          return_array.push(ex)
+          timetmp += ex.duration
+          al.delete_at(index)
+          al.push(return_array.at(return_array.size-1))
+          break
+        end
+        index += 1
+      end
+    end
+   
+   return return_array
+  end
+        
   def get_exercise(wk,corl)
     return_array = Array.new
     if current_user.plan.gym
