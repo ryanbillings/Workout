@@ -5,7 +5,6 @@ class CreateDays < ActiveRecord::Migration
       t.date :date
       t.string :name
       t.float :duration
-      t.boolean :complete
       t.string :color
       t.timestamps
     end

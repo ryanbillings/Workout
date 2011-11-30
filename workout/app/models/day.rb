@@ -1,5 +1,5 @@
 class Day < ActiveRecord::Base
-  attr_accessible :plan_id, :date, :duration, :complete, :day, :name, :color
+  attr_accessible :plan_id, :date, :duration, :day, :name, :color
   belongs_to :plan
   has_many :exercises
   has_event_calendar :start_at_field => 'date', :end_at_field => 'date', :name_field => 'name'
@@ -27,7 +27,7 @@ class Day < ActiveRecord::Base
     colorArray.push("#FF0000")
     colorArray.push("#FF66CC")
     colorArray.push("#336633")
-    colorArray.push("#FFFF33")
+    colorArray.push("#333333")
     colorArray.push("#00FF66")
     colorArray.push("#666633")
     return colorArray

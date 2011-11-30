@@ -9,6 +9,12 @@ class PlansController < ApplicationController
   end
 
   def new
+    exists = Plan.where("user_id = ?", current_user.id)
+    if !exists.empty?
+      redirect_to :root
+      return
+    end
+
     @plan = Plan.new
   end
 

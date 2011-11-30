@@ -11,6 +11,12 @@ class WorkoutTypesController < ApplicationController
   end
 
   def new
+    exists = WorkoutType.where("plan_id = ?", current_user.plan.id)
+    if !exists.empty?
+      redirect_to :root
+      return
+    end
+
     @workout_type = WorkoutType.new
     @workout_types = WorkoutType.getWrkNames
     @errors = Array.new

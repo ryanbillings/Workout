@@ -10,6 +10,11 @@ class WeeksController < ApplicationController
   end
 
   def new
+    exists = Week.where("user_id = ?", current_user.id)
+    if !exists.empty?
+      redirect_to :root
+      return
+    end
     @week = params[:week]
   end
 
